@@ -51,101 +51,107 @@ Data types specify the type of data that a variable can hold. C++ supports vario
 
 #### ➤ `sizeof()` Operator:
 Used to determine the memory (in bytes) occupied by a variable or data type.
-```cpp
+```
 cout << "Size of int: " << sizeof(int) << " bytes" << endl;
-STORAGE CLASSES IN C++
+```
+### STORAGE CLASSES IN C++
 Storage classes in C++ define the scope, visibility, lifetime, and default initial value of variables. There are four major storage classes:
 
-1. auto
-Scope: Local to the block
+#### 1. `auto`
+**Scope** : Local to the block
 
-Lifetime: Until block execution ends
+**Lifetime**: Until block execution ends
 
-Default Value: Garbage (uninitialized)
+**Default Value**: Garbage (uninitialized)
 
-Storage Location: Memory
+**Storage Location**: Memory
 
 Note: auto is redundant in modern C++ unless used with type deduction (auto x = 5;).
 
-cpp
-Copy
-Edit
+```cpp
+
 void func() {
     auto int a = 10;
     cout << a;
 }
-2. register
-Scope: Local
+```
+---
 
-Lifetime: Till block ends
+#### 2. `register`
+**Scope**: Local
 
-Default Value: Garbage
+**Lifetime**: Till block ends
 
-Storage Location: CPU Register (if available)
+**Default Value**: Garbage
 
-Note: Address-of operator & cannot be used on register variables.
+**Storage Location**: CPU Register (if available)
 
-cpp
-Copy
-Edit
+**Note**: Address-of operator & cannot be used on register variables.
+
+```cpp
+
 void fastLoop() {
     register int i;
     for(i = 0; i < 10; i++) {
         cout << i << " ";
     }
 }
-3. static
-Scope: Local to the block
+```
+---
 
-Lifetime: Entire program execution
+#### 3. `static`
+**Scope**: Local to the block
 
-Default Value: Zero
+**Lifetime**: Entire program execution
 
-Storage Location: Static memory
+**Default Value**: Zero
 
-Use: Retains value between multiple function calls.
+**Storage Location**: Static memory
 
-cpp
-Copy
-Edit
+**Use**: Retains value between multiple function calls.
+
+```cpp
+
 void counter() {
     static int count = 0;
     count++;
     cout << count << endl;
 }
-4. extern
-Scope: Global (across files)
+```
 
-Lifetime: Entire program
+---
 
-Default Value: Zero
+#### 4. `extern`
+**Scope**: Global (across files)
 
-Storage Location: Global memory
+**Lifetime**: Entire program
 
-Use: Used to access a global variable declared in another file.
+**Default Value**: Zero
 
-cpp
-Copy
-Edit
+**Storage Location**: Global memory
+
+**Use**: Used to access a global variable declared in another file.
+
+```cpp
 extern int globalVar;
 void show() {
     cout << globalVar;
 }
-Execution Steps
-Declare variables using each storage class.
+```
+### Execution Steps
+- Declare variables using each storage class.
 
-Use sizeof() to display memory consumption of different data types.
+- Use sizeof() to display memory consumption of different data types.
 
-Use function calls to demonstrate the lifetime and scope of static, auto, register, and extern variables.
+- Use function calls to demonstrate the lifetime and scope of static, auto, register, and extern variables.
 
-Run the program and observe the outputs for multiple invocations of the function.
+- Run the program and observe the outputs for multiple invocations of the function.
 
-Sample Output
-Sizeof
+## 💻 Sample Output
 
-vbnet
-Copy
-Edit
+### 📏 Sizeof Operator Output
+
+```txt
 Size of various datatypes
 Integer: 4
 Float: 4
@@ -154,100 +160,90 @@ Long Integer: 8
 Short Integer: 2
 Double: 8
 Character: 1
-STATIC
+```
 
-yaml
-Copy
-Edit
-Address of func variable a : 0x7ffc5a2b3dfc
-Size of variable           : 4
-The variable is            : 1
+## 💻 Sample Output
 
-Address of func variable a : 0x7ffc5a2b3dfc
-Size of variable           : 4
-The variable is            : 2
+### 🧠 STATIC Output
 
-Address of func variable a : 0x7ffc5a2b3dfc
-Size of variable           : 4
-The variable is            : 3
+```txt
+Address of func variable a : 0x404194  
+Size of variable           : 4  
+The variable is            : 1  
 
-The variable is            : 4
-Address of global variable a : 0x601040
-AUTO
+Address of func variable a : 0x404194  
+Size of variable           : 4  
+The variable is            : 2  
 
-less
-Copy
-Edit
-Address of func variable a: 0x7ffeebfa7abc
-Size of variable: 4
-The variable is :10
+Address of func variable a : 0x404194  
+Size of variable           : 4  
+The variable is            : 3  
 
-Address of func variable a: 0x7ffeebfa7abc
-Size of variable: 4
-The variable is :10
+The variable is            : 5  
+Address of global variable a : 0x404040  
+```
 
-Address of func variable a: 0x7ffeebfa7abc
-Size of variable: 4
-The variable is :10
+### ⚡ AUTO Output
+```txt
 
-The variable is :10
-Address of global variable a: 0x601040
-EXTERN
+Address of func variable a: 0x7fff3392d2fc  
+Size of variable: 4  
+The variable is :5  
 
-less
-Copy
-Edit
-Address of func variable a: 0x601040
-Size of variable: 4
-The variable is :15
+Address of func variable a: 0x7fff3392d2fc  
+Size of variable: 4  
+The variable is :5  
 
-Address of func variable a: 0x601040
-Size of variable: 4
-The variable is :16
+Address of func variable a: 0x7fff3392d2fc  
+Size of variable: 4  
+The variable is :5  
 
-Address of func variable a: 0x601040
-Size of variable: 4
-The variable is :17
+The variable is :5  
+Address of global variable a: 0x404040
+```
+### 🌐 EXTERN Output
+```txt
 
-The variable is :17
-Address of global variable a: 0x601040
-REGISTER
+Address of func variable a: 0x404040  
+Size of variable: 4  
+The variable is :6  
 
-csharp
-Copy
-Edit
-Size of variable: 4
-The variable is :99
+Address of func variable a: 0x404040  
+Size of variable: 4  
+The variable is :7  
 
-Size of variable: 4
-The variable is :99
+Address of func variable a: 0x404040  
+Size of variable: 4  
+The variable is :8  
 
-Size of variable: 4
-The variable is :99
+The variable is :8  
+Address of global variable a: 0x404040
+```
+### ⚙️ REGISTER Output
+```txt
 
-The variable is :5
-Address of global variable a: 0x601040
-✅ Conclusion
-Through this experiment, we successfully:
+Size of variable: 4  
+The variable is :1  
 
-Explored different C++ data types and understood their memory usage.
+Size of variable: 4  
+The variable is :1  
 
-Implemented all four major storage classes (auto, register, static, and extern) and analyzed their behavior.
+Size of variable: 4  
+The variable is :1  
 
-Used the sizeof() operator to determine the size of variables in memory.
+The variable is :5  
+Address of global variable a: 0x404040
+```
+## ✅ Conclusion
 
-Understood how storage classes affect scope, lifetime, and memory location.
+This experiment helped us understand the classification of C++ data types and how **storage classes** affect variable behavior in terms of **scope** and **lifetime**.
 
-Observed the persistence of static variables and limitations of register variables.
+Practical examples using `auto`, `register`, `static`, and `extern` illustrated the different **memory management approaches** supported in C++:
 
-Practiced modular programming concepts using extern to access global variables across different files.
+- `auto`: For local variables with automatic storage duration.
+- `register`: Suggests storage in CPU registers for faster access (no `&` operator allowed).
+- `static`: Retains value between function calls within the same scope.
+- `extern`: Allows access to global variables across multiple files.
 
-This experiment reinforces the core C++ concepts that help in writing efficient, maintainable, and performance-optimized programs.
-
-📎 References
-C++ Documentation – cppreference.com
-
-Programming textbooks and lecture slides used in the course.
-
-Instructor's notes and lab manuals.
+By observing **memory addresses**, **value persistence**, and **variable lifetimes**, we gained hands-on insight into how C++ handles variable storage internally.
 
